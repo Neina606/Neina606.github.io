@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout Journal</title>
+    <link rel="stylesheet" href="workout.css">
+</head>
+<body>
+<main>
+    <h1>🏋️ Workout Journal</h1>
+
+    <section class="user-input">
+        <label for="username">Enter your name:</label>
+        <input type="text" id="username" placeholder="e.g. Alex">
+    </section>
+
+    <section class="planner">
+        <h2>Plan your workout</h2>
+        <label for="days">Days per week:</label>
+        <select id="days">
+            <option>1</option><option>2</option><option>3</option>
+            <option>4</option><option>5</option><option>6</option><option>7</option>
+        </select>
+
+        <label for="bodypart">Focus body part:</label>
+        <select id="bodypart">
+            <option>Arms</option>
+            <option>Legs</option>
+            <option>Back</option>
+            <option>Chest</option>
+            <option>Core</option>
+        </select>
+
+        <button onclick="showWorkouts()">Get Workout Ideas</button>
+
+        <div id="workout-list"></div>
+    </section>
+
+    <section class="calendar">
+        <h2>Weekly Body Part Planner</h2>
+        <table>
+            <tr><th>Day</th><th>Body Part</th></tr>
+            <tr><td>Monday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+            <tr><td>Tuesday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+            <tr><td>Wednesday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+            <tr><td>Thursday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+            <tr><td>Friday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+            <tr><td>Saturday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+            <tr><td>Sunday</td><td><select><option>Rest</option><option>Arms</option><option>Legs</option><option>Back</option><option>Chest</option><option>Core</option></select></td></tr>
+        </table>
+    </section>
+
+    <section class="track">
+        <h2>Training Log</h2>
+        <label for="dumbbell">Starting Dumbbell Weight (kg):</label>
+        <input type="number" id="dumbbell" value="5">
+
+        <label for="rating">Rate your session (1-10):</label>
+        <input type="range" id="rating" min="1" max="10">
+
+        <label for="feeling">How did it feel?</label>
+        <textarea id="feeling" placeholder="Write your post-workout notes..."></textarea>
+    </section>
+
+    <section class="progress">
+        <h2>Weekly Progress Tracker</h2>
+        <table>
+            <tr>
+                <th>Day</th>
+                <th>Did you train?</th>
+                <th>How did it feel?</th>
+            </tr>
+            <tr><td>Monday</td><td><input type="checkbox"></td><td><input type="text" placeholder="e.g. Tired but good!"></td></tr>
+            <tr><td>Tuesday</td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+            <tr><td>Wednesday</td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+            <tr><td>Thursday</td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+            <tr><td>Friday</td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+            <tr><td>Saturday</td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+            <tr><td>Sunday</td><td><input type="checkbox"></td><td><input type="text"></td></tr>
+        </table>
+    </section>
+</main>
+
+<script>
+    function showWorkouts() {
+        const bodypart = document.getElementById("bodypart").value;
+        const list = {
+            "Arms": ["Bicep Curls", "Tricep Dips", "Hammer Curls"],
+            "Legs": ["Squats", "Lunges", "Leg Press"],
+            "Back": ["Deadlifts", "Rows", "Pull-ups"],
+            "Chest": ["Push-ups", "Chest Press", "Chest Fly"],
+            "Core": ["Plank", "Russian Twists", "Leg Raises"]
+        };
+        const workoutList = list[bodypart];
+        document.getElementById("workout-list").innerHTML = "<ul>" +
+            workoutList.map(w => `<li>${w}</li>`).join("") + "</ul>";
+    }
+</script>
+</body>
+</html>
